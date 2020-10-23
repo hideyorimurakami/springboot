@@ -1,6 +1,5 @@
 package com.example.demo.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,14 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.models.BookRepository;
 
+import lombok.RequiredArgsConstructor;
+@RequiredArgsConstructor
 @Controller
 public class HelloController {
 
-	private BookRepository rep;
-	@Autowired
-	public  HelloController(BookRepository rep) {
-		this.rep = rep;
-	}
+	private final BookRepository rep;
 
 	@GetMapping("/hello")
 	@ResponseBody
@@ -35,4 +32,3 @@ public class HelloController {
 		return "list";
 	}
 }
-
